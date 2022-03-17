@@ -9,3 +9,5 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comment
         fields = ['id', 'video_id', 'text', 'likes', 'dislikes', 'user_id']
         depth = 1
+
+    reply_id = serializers.IntegerField(write_only=True)

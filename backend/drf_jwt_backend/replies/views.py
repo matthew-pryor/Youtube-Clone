@@ -15,9 +15,9 @@ def get_all_replies(request):
     return Response(serializer.data)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def user_replies(request):
+def user_comment_replies(request):
     print(
         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
     if request.method == 'POST':

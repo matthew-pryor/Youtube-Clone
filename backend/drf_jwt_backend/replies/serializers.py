@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from . import models
 from .models import Reply
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
@@ -7,5 +8,4 @@ from .models import Reply
 class ReplySerializer(serializers.ModelSerializer):
     class Meta:
         model = Reply
-        fields = ['id', 'comment', 'text', 'user_id']
-        depth = 1
+        fields = ['text']
