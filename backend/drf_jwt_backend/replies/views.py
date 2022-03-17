@@ -10,14 +10,17 @@ from django.shortcuts import get_list_or_404, get_object_or_404
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def get_all_replies(request):
-    replies = Reply.objects.all()
+    replies = Reply.objects.all
     serializer = ReplySerializer(replies, many=True)
     return Response(serializer.data)
 
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def user_comment_replies(request):
+def user_comment_replies(request, pk):
+
+    replies = get_object_or_404(Reply, pk=pk)
+
     print(
         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
     if request.method == 'POST':
@@ -26,7 +29,3 @@ def user_comment_replies(request):
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    elif request.method == 'GET':
-        replies = Reply.objects.filter(user_id=request.user.id)
-        serializer = ReplySerializer(replies, many=True)
-        return Response(serializer.data)

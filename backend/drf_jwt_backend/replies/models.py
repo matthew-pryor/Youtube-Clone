@@ -12,8 +12,4 @@ class Reply(models.Model):
 
 
     def __str__(self):
-        return {
-            self.user,
-            self.text,
-            self.comment
-        }
+        return self.text

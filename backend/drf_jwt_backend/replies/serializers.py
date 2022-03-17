@@ -8,4 +8,7 @@ from .models import Reply
 class ReplySerializer(serializers.ModelSerializer):
     class Meta:
         model = Reply
-        fields = ['text', 'user_id']
+        fields = ['text', 'user_id', 'comment']
+        depth = 1
+    
+    reply_id = serializers.IntegerField(write_only=True)
