@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from . import models
 from .models import Reply
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
@@ -10,5 +9,3 @@ class ReplySerializer(serializers.ModelSerializer):
         model = Reply
         fields = ['text', 'user_id', 'comment']
         depth = 1
-    
-    reply_id = serializers.IntegerField(write_only=True)
