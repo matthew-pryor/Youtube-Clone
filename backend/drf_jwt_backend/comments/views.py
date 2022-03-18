@@ -20,12 +20,16 @@ def get_all_comments(request):
 @permission_classes([AllowAny])
 def user_comments_by_video(request):
 
-    sort_comments = request.query_params.get('video_id')
+    comments_param = request.query_params.get('video_id')
+    sort_param = request.query_params.get('sort')
 
     comments = Comment.objects.all()
 
-    if sort_comments:
-        comments = comments.filter(video_id=sort_comments)
+    if comments_param:
+        comments = comments.filter(video_id=comments_param)
+
+    if sort_param:
+        comments = comments.order_by(sort_param)
 
     serializer = CommentSerializer(comments, many=True)
     return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
