@@ -7,25 +7,15 @@ from .serializers import ReplySerializer
 from django.shortcuts import get_list_or_404, get_object_or_404
 
 
-@api_view(['GET'])
-@permission_classes([AllowAny])
-def get_all_replies(request):
-    replies = Reply.objects.all
-    serializer = ReplySerializer(replies, many=True)
-    return Response(serializer.data)
-
-
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def user_comment_replies(request, pk):
 
-    replies = get_object_or_404(Reply, pk=pk)
-
-    print(
-        'User ', f"{request.user.id} {request.user.email} {request.user.username}")
-    if request.method == 'POST':
-        serializer = ReplySerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save(user=request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    comment_id = pk
+    request.data['comment_id'] = comment_id
+    serializer = ReplySerializer(data=request.data)
+        
+    if serializer.is_valid():
+        serializer.save(user=request.user)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

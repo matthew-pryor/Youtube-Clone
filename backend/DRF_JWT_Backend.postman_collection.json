@@ -253,6 +253,36 @@
 					"response": []
 				},
 				{
+					"name": "GET all comments by video (unprotected)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/video_id?video_id=test3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"video_id"
+							],
+							"query": [
+								{
+									"key": "video_id",
+									"value": "test3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "GET comments for user (protected)",
 					"request": {
 						"method": "GET",
@@ -305,7 +335,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"video_id\": \"test2\",\r\n    \"text\": \"test2\",\r\n    \"likes\": 1,\r\n    \"dislikes\": 500\r\n}",
+							"raw": "{\r\n    \"video_id\": \"test3\",\r\n    \"text\": \"test3\",\r\n    \"likes\": 1,\r\n    \"dislikes\": 500\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -352,7 +382,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/comments/2/",
+							"raw": "http://127.0.0.1:8000/api/comments/5/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -364,7 +394,7 @@
 							"path": [
 								"api",
 								"comments",
-								"2",
+								"5",
 								""
 							]
 						}
@@ -405,6 +435,52 @@
 								"api",
 								"comments",
 								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Replies",
+			"item": [
+				{
+					"name": "POST replies for user (protected)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ4MTU2ODM5LCJpYXQiOjE2NDcyOTI4MzksImp0aSI6ImJjYzJhZTUzOTRlYzQ3OThiNjI0YTcwYTYzYjcxOThmIiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJqanZlZ2EiLCJmaXJzdF9uYW1lIjoiIn0.l9ATW5CpWF2TGniqVgU1I-a8LkuqgLQ4ok3tJh6asAA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"Yada yada yada\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/replies/comments/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"replies",
+								"comments",
+								"1",
 								""
 							]
 						}
