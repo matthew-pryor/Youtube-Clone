@@ -12,6 +12,13 @@ from django.shortcuts import get_list_or_404, get_object_or_404
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def get_all_comments(request):
+    comments = Comment.objects.all()
+    serializer = CommentSerializer(comments, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def user_comments_by_video(request):
 
     sort_comments = request.query_params.get('video_id')
 
