@@ -14,29 +14,13 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
-import axios from "axios";
-import { useEffect, useState } from "react/cjs/react.production.min";
-import SearchBar from "./components/SearchBar/SearchBar";
 
 function App() {
-
-  const [searchResults, setSearchResults] = useState(['']);
-
-  useEffect(() => {
-    getSearchResults()
-  }, [])
-
-  async function getSearchResults(searchTerm=""){
-    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&key=AIzaSyBuzjiMZRf5Ajpg69rAQjY92YIC18cCjS4`)
-    console.log(response.data);
-    setSearchResults(response.data);
-  }
 
 
   return (
     <div>
       <Navbar />
-      <SearchBar getSearchResults={getSearchResults}/>
       <Routes>
         <Route
           path="/"

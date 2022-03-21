@@ -1,12 +1,29 @@
-import React from "react";
+import SearchBar from "../SearchBar/SearchBar";
+import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import "./NavBar.css";
+import axios from "axios";
+
+
+
 
 const Navbar = () => {
   const { logoutUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [searchResults, setSearchResults] = useState([]);
+
+useEffect(() => {
+  getSearchResults()
+}, [])
+
+async function getSearchResults(searchTerm="bob ross"){
+  let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&key=AIzaSyBuzjiMZRf5Ajpg69rAQjY92YIC18cCjS4`)
+  console.log(response.data);
+  setSearchResults(response.data);
+}
+
   return (
     <div className="navBar">
       <ul>
@@ -21,6 +38,9 @@ const Navbar = () => {
           ) : (
             <button onClick={() => navigate("/login")}>Login</button>
           )}
+        </li>
+        <li>
+          <SearchBar getSearchResults={getSearchResults}/>
         </li>
       </ul>
     </div>
