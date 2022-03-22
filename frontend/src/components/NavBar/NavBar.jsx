@@ -18,10 +18,18 @@ useEffect(() => {
   getSearchResults()
 }, [])
 
+// async function displaySearchResults(searchResults=getSearchResults.map) {
+//   let response = await axios.get(`https://www.googleapis.com/youtube/v3/results?part=snippet&q=${searchResults}&type=video&maxResults=5&key=AIzaSyBuzjiMZRf5Ajpg69rAQjY92YIC18cCjS4`)
+//   console.log(response.data)
+//   displaySearchResults(response.data)
+// }
+
 async function getSearchResults(searchTerm="bob ross"){
-  let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&key=AIzaSyBuzjiMZRf5Ajpg69rAQjY92YIC18cCjS4`)
+  let response = await axios.get(`https://www.googleapis.com/youtube/v3/results?part=snippet&search?q=${searchTerm}&type=video&key=AIzaSyBuzjiMZRf5Ajpg69rAQjY92YIC18cCjS4`)
   console.log(response.data);
   setSearchResults(response.data);
+  // response.map(searchResults)
+  // console.log(searchResults)
 }
 
   return (
