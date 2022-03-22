@@ -5,6 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import "./NavBar.css";
 import axios from "axios";
+//import CommentList from "../CommentList/CommentList";
 
 
 
@@ -25,8 +26,13 @@ useEffect(() => {
 // }
 
 async function getSearchResults(searchTerm="bob ross"){
-  let response = await axios.get(`https://www.googleapis.com/youtube/v3/results?part=snippet&search?q=${searchTerm}&type=video&key=AIzaSyBuzjiMZRf5Ajpg69rAQjY92YIC18cCjS4`)
+  let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&search?q=${searchTerm}&type=video&key=AIzaSyBuzjiMZRf5Ajpg69rAQjY92YIC18cCjS4`)
   console.log(response.data);
+  console.log(response.data.items.map((entry) => {
+    return(
+      entry.id.videoId
+    )
+  }))
   setSearchResults(response.data);
   // response.map(searchResults)
   // console.log(searchResults)
@@ -50,6 +56,7 @@ async function getSearchResults(searchTerm="bob ross"){
         <li>
           <SearchBar getSearchResults={getSearchResults}/>
         </li>
+
       </ul>
     </div>
   );
