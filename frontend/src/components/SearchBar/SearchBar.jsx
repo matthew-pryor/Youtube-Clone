@@ -5,11 +5,13 @@ import { Link, useNavigate } from "react-router-dom";
 const SearchBar = (props) => {
 
 const [searchRequest, setSearchRequest] = useState('');
+const navigate = useNavigate();
 
 const handleSubmit = (event) => {
     event.preventDefault();
     console.log(searchRequest);
     props.getSearchResults(searchRequest);
+    navigate("/search");
 }
     
     return (

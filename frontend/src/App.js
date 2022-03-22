@@ -8,6 +8,7 @@ import React, { useState, useEffect } from "react";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import SearchResultsPage from "./pages/SearchResultsPage/SearchResultsPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -25,7 +26,6 @@ const [searchResults, setSearchResults] = useState([]);
 useEffect(() => {
   getSearchResults()
 }, [])
-
   
 async function getSearchResults(searchTerm="bob ross"){
   let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&search?q=${searchTerm}&type=video&key=AIzaSyBuzjiMZRf5Ajpg69rAQjY92YIC18cCjS4`)
@@ -36,8 +36,6 @@ async function getSearchResults(searchTerm="bob ross"){
     )
   }))
   setSearchResults(response.data);
-  // response.map(searchResults)
-  // console.log(searchResults)
 }
 
 
@@ -56,6 +54,8 @@ async function getSearchResults(searchTerm="bob ross"){
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/search" element={<SearchResultsPage />} />
+        {/* <Route path="/video" element={<VideoPage />} /> */}
       </Routes>
       <Footer />
     </div>
