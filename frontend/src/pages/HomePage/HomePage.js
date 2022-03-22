@@ -5,7 +5,7 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
-// import CommentList from "../../components/CommentList/CommentList";
+import CommentList from "../../components/CommentList/CommentList";
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -32,6 +32,7 @@ const HomePage = () => {
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
       <VideoPlayer></VideoPlayer>
+      <CommentList />
     </div>
   );
 };
