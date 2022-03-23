@@ -12,14 +12,9 @@ const SearchResultsPage = () => {
       getSearchResults()
     }, [])
       
-    async function getSearchResults(searchTerm="bob ross"){
+    async function getSearchResults(searchTerm=''){
       let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&search?q=${searchTerm}&type=video&key=AIzaSyBuzjiMZRf5Ajpg69rAQjY92YIC18cCjS4`)
       console.log(response.data);
-      console.log(response.data.items.map((entry) => {
-        return(
-          entry.snippet.thumbnails.high
-        )
-      }))
       setSearchResults(response.data);
     }
     
@@ -28,16 +23,16 @@ const SearchResultsPage = () => {
     return ( 
         <div>
             <h1>Search Results:</h1>
-            {/* <table>
+            <table>
               <tbody>
-                <tr> */}
+                <tr>
                   {searchResults &&
-                    searchResults.map((entry) => (
-                    <img src={`https://i.ytimg.com/vi/${entry.id.videoId}/hqdefault.jpg`}/>
+                    searchResults.map((searchResults) => (
+                    <img src={`https://i.ytimg.com/vi/${searchResults.id.videoId}/hqdefault.jpg`}/>
                   ))}
-                {/* </tr>
+                </tr>
               </tbody>
-            </table> */}
+            </table>
         </div>
      );
 }
