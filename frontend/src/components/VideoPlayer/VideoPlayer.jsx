@@ -1,15 +1,14 @@
 import React from "react";
+import useAuth from "../../hooks/useAuth";
 
-const VideoPlayer = () => {
+const VideoPlayer = (props) => {
 
-    //entry.id.videoID
-
-    let thing = 'GMkKr3qOLs4'
+    let selectedVideoId = 'GMkKr3qOLs4'
 
     return (
-        <iframe id="ytplayer" type="text/html" width="540" height="360"
-        src={`https://www.youtube.com/embed/${thing}?autoplay=1&origin=http://example.com`}
-        frameborder="0"></iframe>
+        <iframe className="video" id="ytplayer" type="text/html" width="540" height="360"
+        src={`https://www.youtube.com/embed/${selectedVideoId}?autoplay=1&origin=http://example.com`}
+        frameBorder="0"></iframe>
     );
 }
 

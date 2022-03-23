@@ -9,6 +9,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import SearchResultsPage from "./pages/SearchResultsPage/SearchResultsPage";
+import VideoPage from "./pages/VideoPage/VideoPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -55,7 +56,7 @@ async function getSearchResults(searchTerm="bob ross"){
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/search" element={<SearchResultsPage />} />
-        {/* <Route path="/video" element={<VideoPage />} /> */}
+        <Route path="/video" element={<VideoPage />} />
       </Routes>
       <Footer />
     </div>

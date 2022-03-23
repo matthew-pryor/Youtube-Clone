@@ -17,7 +17,7 @@ const SearchResultsPage = () => {
       console.log(response.data);
       console.log(response.data.items.map((entry) => {
         return(
-          entry.snippet.thumbnails.default
+          entry.snippet.thumbnails.high
         )
       }))
       setSearchResults(response.data);
@@ -28,7 +28,16 @@ const SearchResultsPage = () => {
     return ( 
         <div>
             <h1>Search Results:</h1>
-            <DisplaySearchResults parentEntries={searchResults}/>
+            {/* <table>
+              <tbody>
+                <tr> */}
+                  {searchResults &&
+                    searchResults.map((entry) => (
+                    <img src={`https://i.ytimg.com/vi/${entry.id.videoId}/hqdefault.jpg`}/>
+                  ))}
+                {/* </tr>
+              </tbody>
+            </table> */}
         </div>
      );
 }
