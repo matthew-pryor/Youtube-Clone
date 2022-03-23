@@ -24,26 +24,27 @@ function App() {
 
 const [searchResults, setSearchResults] = useState([]);
 
-useEffect(() => {
-  getSearchResults()
-}, [])
+// useEffect(() => {
+//   getSearchResults()
+// }, [])
   
-async function getSearchResults(searchTerm="bob ross"){
-  let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&search?q=${searchTerm}&type=video&key=AIzaSyBuzjiMZRf5Ajpg69rAQjY92YIC18cCjS4`)
-  console.log(response.data);
-  console.log(response.data.items.map((entry) => {
-    return(
-      entry.snippet.thumbnails.default
-    )
-  }))
-  setSearchResults(response.data);
-}
+// async function getSearchResults(searchTerm="bob ross"){
+//   let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&search?q=${searchTerm}&type=video&key=AIzaSyAuFcOc0gvBKmWmAZUt1LPUnnN1baWifgo`)
+//   console.log(response.data);
+//   console.log(response.data.items.map((entry) => {
+//     return(
+//       entry.id.videoId
+//     )
+//   }))
+//   setSearchResults(response.data);
+// }
 
 
   return (
     <div>
       <Navbar />
-      <SearchBar getSearchResults={getSearchResults}/>
+      <SearchBar />
+      {/* <SearchBar getSearchResults={getSearchResults}/> */}
       <Routes>
         <Route
           path="/"
