@@ -6,7 +6,7 @@ import useAuth from "../../hooks/useAuth";
 const CommentList = () => {
 
     const [user, token] = useAuth();
-    const [comments, setComments] = useState([]);
+    const [comment, setComments] = useState([]);
 
     useEffect(() => {
         const fetchComments = async () => {
@@ -26,8 +26,8 @@ const CommentList = () => {
 
     return (
         <div>
-            {comments &&
-            comments.map((comment) => (
+            {comment &&
+            comment.map((comment) => (
             <p key={comment.id}>
                 {comment.user_id} {comment.video_id} {comment.text} {comment.likes} {comment.dislikes}
             </p>))}
