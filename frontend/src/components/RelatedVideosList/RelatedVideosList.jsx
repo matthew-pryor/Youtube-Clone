@@ -1,21 +1,36 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
+import { useNavigate, useLocation } from "react-router-dom";
 
 
 const RelatedVideosList = (props) => {
     
     const [relatedVideos, setRelatedVideos] = useState([])
+    const {state} = useLocation();
+    const navigate = useNavigate();
     
     async function getrelatedVideos() {
-        const related = await axios.get(`https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.search.list?part=snippet&type=video&relatedToVideoId=GMkKr3qOLs4`)
-        console.log(related.data.items);
-        // setRelatedVideos(related.data.items)
+        const related = await axios.get(`https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.search.list?part=snippet&type=video&relatedToVideoId=${state.id.videoId}`)
+        console.log(related.data);
+        setRelatedVideos(related.data.items);
     }
     
     
     return ( 
         <div>
-            
+            <h1>Search Results for: "{state.searchTerm}"</h1>
+            <table>
+              <tbody>
+                  {relatedVideos &&
+                    relatedVideos.map((entry) => (
+                      <tr>
+                        <tr>{entry.snippet.title}</tr>
+                          <img src={`https://i.ytimg.com/vi/${entry.id.videoId}/mqdefault.jpg`} onClick={() => {navigate("/video", {state:{selectedVideo:entry}})}}/>
+                          <p>{entry.snippet.description}</p>
+                      </tr>
+                  ))}
+              </tbody>
+            </table>
         </div>
      );
 }
