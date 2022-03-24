@@ -32,7 +32,7 @@ const SearchResultsPage = (props) => {
                     searchResults.map((entry) => (
                       <tr>
                         <tr>{entry.snippet.title}</tr>
-                          <img src={`https://i.ytimg.com/vi/${entry.id.videoId}/hqdefault.jpg`} onClick={() => {navigate("/video", {state:{videoId:entry}})}}/>
+                          <img src={`https://i.ytimg.com/vi/${entry.id.videoId}/hqdefault.jpg`} onClick={() => {navigate("/video", {state:{selectedVideo:entry}})}}/>
                           <p>{entry.snippet.description}</p>
                       </tr>
                   ))}
