@@ -12,10 +12,10 @@ const CommentList = (props) => {
         try{
             let response = await axios.get(`http://127.0.0.1:8000/api/comments/video_id?video_id=${props.selectedVideo}`)
             console.log(response.data)
+            console.log(props.selectedVideo)
+            console.log(comment.video_id)
             setComments(response.data.filter((comment)=>{
-                if (comment.video_id===props.selectedVideo) {
-                    return comment;
-                }}));
+                if (comment.video_id===props.selectedVideo) {return comment}}));
         }
         catch(error){
             console.log(error.message)
