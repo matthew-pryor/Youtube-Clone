@@ -11,9 +11,12 @@ const RelatedVideosList = (props) => {
 
     
   async function getRelatedVideos() {
-    const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${state.selectedVideo.id.videoId}&part=snippet&type=video&totalResults=5&key=AIzaSyAuFcOc0gvBKmWmAZUt1LPUnnN1baWifgo`)
+    const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${state.selectedVideo.id.videoId}&part=snippet&type=video&totalResults=5&key=AIzaSyCYzL9nmy5-XCl6Ci5x-Jzq2xA_Pe3PFq0
+    `)
     // Matt's Key: AIzaSyAuFcOc0gvBKmWmAZUt1LPUnnN1baWifgo
     // Vance's Key: AIzaSyBuzjiMZRf5Ajpg69rAQjY92YIC18cCjS4
+    // Key Three: AIzaSyCYzL9nmy5-XCl6Ci5x-Jzq2xA_Pe3PFq0
+
     console.log(relatedVideos);
     setRelatedVideos(response.data.items);
   }
@@ -30,7 +33,7 @@ const RelatedVideosList = (props) => {
                 {relatedVideos &&
                   relatedVideos.map((selectedVideo) => (
                     <tr key={selectedVideo.etag}>
-                      <tr>{state.relatedVideos.snippet.title}</tr>
+                      <tr>{selectedVideo.snippet.title}</tr>
                         {/* <tr>{selectedVideo.snippet.title}</tr> */}
                         <img src={`https://i.ytimg.com/vi/${selectedVideo.id.videoId}/mqdefault.jpg`} onClick={() => {navigate("/video", {state:{selectedVideo:selectedVideo}})}}/>
                     </tr>
