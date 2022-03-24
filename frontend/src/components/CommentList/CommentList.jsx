@@ -3,26 +3,27 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 
 
-const CommentList = () => {
+const CommentList = (props) => {
 
     const [user, token] = useAuth();
     const [comment, setComments] = useState([]);
 
+    async function fetchComments() {
+        try{
+            let response = await axios.get(`http://127.0.0.1:8000/api/comments/video_id?video_id=${props.selectedVideo}`)
+            console.log(response.data)
+            setComments(response.data.filter((comment)=>{
+                if (comment.video_id===props.selectedVideo) {
+                    return comment;
+                }}));
+        }
+        catch(error){
+            console.log(error.message)
+        }};
+
     useEffect(() => {
-        const fetchComments = async () => {
-            try {
-                let response = await axios.get("http://127.0.0.1:8000/api/comments/", {
-                    headers: {
-                        Authorization: "Bearer " + token,
-                    },
-                });
-                setComments(response.data);
-            } catch (error) {
-                console.log(error.message);
-            }
-        };
-        fetchComments();
-    }, [token]);
+        fetchComments()
+    }, []);
 
     return (
         <div>

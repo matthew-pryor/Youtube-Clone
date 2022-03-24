@@ -33,7 +33,6 @@ const RelatedVideosList = (props) => {
                 {relatedVideos &&
                   relatedVideos.map((selectedVideo) => (
                     <tr key={selectedVideo.etag}>
-                      <tr>{selectedVideo.snippet.title}</tr>
                         {/* <tr>{selectedVideo.snippet.title}</tr> */}
                         <img src={`https://i.ytimg.com/vi/${selectedVideo.id.videoId}/mqdefault.jpg`} onClick={() => {navigate("/video", {state:{selectedVideo:selectedVideo}})}}/>
                     </tr>
