@@ -11,7 +11,7 @@ const RelatedVideosList = (props) => {
 
     
   async function getSearchResults() {
-    const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${props.selectedVideo}&part=snippet&type=video&totalResults=5&key=AIzaSyAuFcOc0gvBKmWmAZUt1LPUnnN1baWifgo`)
+    const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${props.selectedVideo}&part=snippet&type=video&totalResults=5&key=AIzaSyBuzjiMZRf5Ajpg69rAQjY92YIC18cCjS4`)
     // Matt's Key: AIzaSyAuFcOc0gvBKmWmAZUt1LPUnnN1baWifgo
     // Vance's Key: AIzaSyBuzjiMZRf5Ajpg69rAQjY92YIC18cCjS4
     console.log(searchResults);
@@ -29,7 +29,7 @@ const RelatedVideosList = (props) => {
             <tbody>
                 {searchResults &&
                   searchResults.map((entry) => (
-                    <tr>
+                    <tr key={entry.etag}>
                       <tr>{entry.snippet.title}</tr>
                         <img src={`https://i.ytimg.com/vi/${entry.id.videoId}/mqdefault.jpg`} onClick={() => {navigate("/video", {state:{selectedVideo:entry}})}}/>
                     </tr>
