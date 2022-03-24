@@ -15,7 +15,7 @@ const SearchResultsPage = (props) => {
       const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${state.searchTerm}&part=snippet&type=video&totalResults=5&key=AIzaSyAuFcOc0gvBKmWmAZUt1LPUnnN1baWifgo`)
       // Matt's Key: AIzaSyAuFcOc0gvBKmWmAZUt1LPUnnN1baWifgo
       // Vance's Key: AIzaSyBuzjiMZRf5Ajpg69rAQjY92YIC18cCjS4
-      console.log(searchResults);
+      console.log(response.data);
       setSearchResults(response.data.items);
     }
     
@@ -32,7 +32,7 @@ const SearchResultsPage = (props) => {
                     searchResults.map((entry) => (
                       <tr>
                         <tr>{entry.snippet.title}</tr>
-                          <img src={`https://i.ytimg.com/vi/${entry.id.videoId}/hqdefault.jpg`} onClick={() => {navigate("/video", {state:{videoId:entry}})}}/>
+                          <img src={`https://i.ytimg.com/vi/${entry.id.videoId}/hqdefault.jpg`} onClick={() => {navigate("/video", {state:{selectedVideo:entry}})}}/>
                           <p>{entry.snippet.description}</p>
                       </tr>
                   ))}
