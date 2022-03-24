@@ -1,10 +1,9 @@
 import React from "react";
-import { useEffect, useState } from "react/cjs/react.production.min";
 import useAuth from "../../hooks/useAuth";
 
 const VideoPlayer = (props) => {
 
-    
+    let selectedVideoId = 'GMkKr3qOLs4'
 
     return (
         <iframe className="video" id="ytplayer" type="text/html" width="540" height="360"

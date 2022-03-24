@@ -15,7 +15,7 @@ const SearchResultsPage = (props) => {
       const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${state.searchTerm}&part=snippet&type=video&totalResults=5&key=AIzaSyAuFcOc0gvBKmWmAZUt1LPUnnN1baWifgo`)
       // Matt's Key: AIzaSyAuFcOc0gvBKmWmAZUt1LPUnnN1baWifgo
       // Vance's Key: AIzaSyBuzjiMZRf5Ajpg69rAQjY92YIC18cCjS4
-      console.log(response.data);
+      console.log(searchResults);
       setSearchResults(response.data.items);
     }
     

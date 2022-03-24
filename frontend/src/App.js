@@ -44,6 +44,7 @@ const [searchResults, setSearchResults] = useState([]);
     <div>
       <Navbar />
       <SearchBar />
+      {/* <SearchBar getSearchResults={getSearchResults}/> */}
       <Routes>
         <Route
           path="/"
