@@ -29,7 +29,7 @@ const CommentList = () => {
             {comment &&
             comment.map((comment) => (
             <p key={comment.id}>
-                {comment.user_id} {comment.video_id} {comment.text} {comment.likes} {comment.dislikes}
+                {user.username} {comment.video_id} {comment.text} {comment.likes} {comment.dislikes}
             </p>))}
         </div>
     );

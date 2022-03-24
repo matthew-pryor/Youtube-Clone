@@ -10,15 +10,14 @@ const CommentForm = (props) => {
     async function handleSubmitForm(event) {
         event.preventDefault(); //prevent page refresh when commenting
         let newComment = {
-            user_id: user,
+            user_id: user.username,
             video_id: props.selectedVideo,
             text: text,
             likes: 0,
             dislikes: 0,
         };
-        console.log(props.selectedVideo.data)
         console.log(newComment);
-        await axios.post('http://127.0.0.1.8000/api/comments/', newComment, { 
+        await axios.post('http://127.0.0.1:8000/api/comments/', newComment, { 
             headers: {
               Authorization: "Bearer " + token,
             },
@@ -28,7 +27,7 @@ const CommentForm = (props) => {
     return ( 
         <form onSubmit={handleSubmitForm}>
             <label>Comment:</label>
-            <input type='text'/>
+            <input type='text' placeholder="Comment Here!" value={text} onChange={(event) => setText(event.target.value)}/>
             <button type='submit'>Post</button>
         </form>
      );
