@@ -9,13 +9,16 @@ const RelatedVideosList = (props) => {
     const {state} = useLocation();
     const navigate = useNavigate();
     
-    async function getrelatedVideos() {
-        const related = await axios.get(`https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.search.list?part=snippet&type=video&relatedToVideoId=${state.id.videoId}`)
+    async function getRelatedVideos() {
+        const related = await axios.get(`https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.search.list?part=snippet&type=video&relatedToVideoId=${state.selectedVideo.id.videoId}`)
         console.log(related.data);
         setRelatedVideos(related.data.items);
     }
     
-    
+    useEffect(() => {
+        getRelatedVideos()
+    }, [state.selectedVideo])
+
     return ( 
         <div>
             <h1>Search Results for: "{state.searchTerm}"</h1>
@@ -26,7 +29,6 @@ const RelatedVideosList = (props) => {
                       <tr>
                         <tr>{entry.snippet.title}</tr>
                           <img src={`https://i.ytimg.com/vi/${entry.id.videoId}/mqdefault.jpg`} onClick={() => {navigate("/video", {state:{selectedVideo:entry}})}}/>
-                          <p>{entry.snippet.description}</p>
                       </tr>
                   ))}
               </tbody>
