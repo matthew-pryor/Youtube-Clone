@@ -1,11 +1,10 @@
 import React, {useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
 import CommentList from "../../components/CommentList/CommentList";
 import CommentForm from "../../components/CommentForm.jsx/CommentForm";
 import RelatedVideosList from "../../components/RelatedVideosList/RelatedVideosList";
-import { useNavigate, useLocation } from "react-router-dom";
 
 const VideoPage = (props) => {
     
@@ -16,7 +15,7 @@ const VideoPage = (props) => {
         <div>
             <h1>Video Player for {user.username}</h1>
             <VideoPlayer selectedVideo={state.selectedVideo.id.videoId}/>
-            <RelatedVideosList />
+            <RelatedVideosList selectedVideo={state.selectedVideo.id.videoId}/>
             <CommentForm />
             <CommentList />
         </div>
