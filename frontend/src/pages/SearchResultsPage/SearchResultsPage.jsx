@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from "react";
-import DisplaySearchResults from "../../components/DisplaySearchResults/DisplaySearchResults";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 
 
 const SearchResultsPage = (props) => {
 
     const [searchResults, setSearchResults] = useState([]);
-    const {state} = useLocation()
+    const {state} = useLocation();
+    const navigate = useNavigate()
 
       
     async function getSearchResults() {
@@ -30,8 +30,10 @@ const SearchResultsPage = (props) => {
               <tbody>
                   {searchResults &&
                     searchResults.map((entry) => (
-                      <tr key={entry.etag}>
-                        <img src={`https://i.ytimg.com/vi/${entry.id.videoId}/hqdefault.jpg`} />
+                      <tr>
+                        <tr>{entry.snippet.title}</tr>
+                          <img src={`https://i.ytimg.com/vi/${entry.id.videoId}/hqdefault.jpg`} onClick={() => {navigate("/video", {state:{videoId:entry}})}}/>
+                          <p>{entry.snippet.description}</p>
                       </tr>
                   ))}
               </tbody>
