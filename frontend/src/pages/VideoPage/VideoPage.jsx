@@ -17,10 +17,9 @@ const VideoPage = (props) => {
             <h1>{state.selectedVideo.snippet.title}</h1>
             <VideoPlayer selectedVideo={state.selectedVideo.id.videoId}/>
             <CommentForm />
-            <h2>{state.selectedVideo.snippet.title}</h2>
-            <RelatedVideosList selectedVideo={state.selectedVideo}/>
-            
             <CommentList />
+            <RelatedVideosList selectedVideo={state.selectedVideo}/>
+    
         </div>
      );
 }

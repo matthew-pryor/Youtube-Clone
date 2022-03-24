@@ -24,20 +24,6 @@ function App() {
 
 const [searchResults, setSearchResults] = useState([]);
 
-// useEffect(() => {
-//   getSearchResults()
-// }, [])
-  
-// async function getSearchResults(searchTerm="bob ross"){
-//   let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&search?q=${searchTerm}&type=video&key=AIzaSyAuFcOc0gvBKmWmAZUt1LPUnnN1baWifgo`)
-//   console.log(response.data);
-//   console.log(response.data.items.map((entry) => {
-//     return(
-//       entry.id.videoId
-//     )
-//   }))
-//   setSearchResults(response.data);
-// }
 
 
   return (

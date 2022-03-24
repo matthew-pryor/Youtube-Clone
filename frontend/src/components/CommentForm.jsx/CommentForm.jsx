@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import axios from "axios";
+import React, {useState, useEffect} from "react";
 import useAuth from "../../hooks/useAuth";
 
 const CommentForm = (props) => {
@@ -6,26 +7,30 @@ const CommentForm = (props) => {
     const [user, token] = useAuth();
     const [text, setText] = useState('');
 
-    function handleSubmit(event) {
-        event.preventDefault(); //prevent page refresh when posting
+    async function handleSubmitForm(event) {
+        event.preventDefault(); //prevent page refresh when commenting
         let newComment = {
             user_id: user,
-            video_id: props.video.id.videoId,
+            video_id: props.selectedVideo,
             text: text,
             likes: 0,
             dislikes: 0,
         };
+        console.log(props.selectedVideo.data)
         console.log(newComment);
-        props.newComment(newComment);
-    }
+        await axios.post('http://127.0.0.1.8000/api/comments/', newComment, { 
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+    })};
+
 
     return ( 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmitForm}>
             <label>Comment:</label>
             <input type='text'/>
             <button type='submit'>Post</button>
         </form>
-
      );
 }
  
