@@ -5,33 +5,33 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 const RelatedVideosList = (props) => {
     
-  const [searchResults, setSearchResults] = useState([]);
+  const [relatedVideos, setRelatedVideos] = useState([]);
   const {state} = useLocation();
   const navigate = useNavigate()
 
     
-  async function getSearchResults() {
-    const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${props.selectedVideo}&part=snippet&type=video&totalResults=5&key=AIzaSyBuzjiMZRf5Ajpg69rAQjY92YIC18cCjS4`)
+  async function getRelatedVideos() {
+    const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${state.selectedVideo.id.videoId}&part=snippet&type=video&totalResults=5&key=AIzaSyBuzjiMZRf5Ajpg69rAQjY92YIC18cCjS4`)
     // Matt's Key: AIzaSyAuFcOc0gvBKmWmAZUt1LPUnnN1baWifgo
     // Vance's Key: AIzaSyBuzjiMZRf5Ajpg69rAQjY92YIC18cCjS4
-    console.log(searchResults);
-    setSearchResults(response.data.items);
+    console.log(relatedVideos);
+    setRelatedVideos(response.data.items);
   }
   
   useEffect(() => {
-    getSearchResults()
-  }, [state.searchTerm])
+    getRelatedVideos()
+  }, [state.selectedVideo])
 
   return ( 
       <div>
-          <h1>Related Videos</h1>
+          <h1>Related Videos to "{state.selectedVideo.snippet.title}</h1>
           <table>
             <tbody>
-                {searchResults &&
-                  searchResults.map((entry) => (
-                    <tr key={entry.etag}>
-                      <tr>{entry.snippet.title}</tr>
-                        <img src={`https://i.ytimg.com/vi/${entry.id.videoId}/mqdefault.jpg`} onClick={() => {navigate("/video", {state:{selectedVideo:entry}})}}/>
+                {relatedVideos &&
+                  relatedVideos.map((selectedVideo) => (
+                    <tr key={selectedVideo.etag}>
+                        {/* <tr>{selectedVideo.snippet.title}</tr> */}
+                        <img src={`https://i.ytimg.com/vi/${selectedVideo.id.videoId}/mqdefault.jpg`} onClick={() => {navigate("/video", {state:{selectedVideo:selectedVideo}})}}/>
                     </tr>
                 ))}
             </tbody>

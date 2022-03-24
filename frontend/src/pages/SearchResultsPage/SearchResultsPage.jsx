@@ -29,11 +29,11 @@ const SearchResultsPage = (props) => {
             <table>
               <tbody>
                   {searchResults &&
-                    searchResults.map((entry) => (
-                      <tr key={entry.etag}>
-                        <tr>{entry.snippet.title}</tr>
-                          <img src={`https://i.ytimg.com/vi/${entry.id.videoId}/hqdefault.jpg`} onClick={() => {navigate("/video", {state:{selectedVideo:entry}})}}/>
-                          <p>{entry.snippet.description}</p>
+                    searchResults.map((selectedVideo) => (
+                      <tr key={selectedVideo.etag}>
+                        <tr>{selectedVideo.snippet.title}</tr>
+                          <img src={`https://i.ytimg.com/vi/${selectedVideo.id.videoId}/hqdefault.jpg`} onClick={() => {navigate("/video", {state:{selectedVideo:selectedVideo}})}}/>
+                          <p>{selectedVideo.snippet.description}</p>
                       </tr>
                   ))}
               </tbody>
