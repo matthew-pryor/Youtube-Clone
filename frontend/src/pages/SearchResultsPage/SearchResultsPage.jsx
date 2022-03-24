@@ -21,7 +21,7 @@ const SearchResultsPage = (props) => {
     
     useEffect(() => {
       getSearchResults()
-    }, [])
+    }, [state.searchTerm])
 
     return ( 
         <div>
