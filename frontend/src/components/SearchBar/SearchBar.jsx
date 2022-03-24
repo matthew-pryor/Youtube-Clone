@@ -11,8 +11,7 @@ const handleSubmit = (event) => {
     event.preventDefault();
     console.log(searchTerm);
     setSearchTerm(searchTerm);
-    props.getSearchResults(searchTerm);
-    navigate("/search");
+    navigate("/search", {state:{searchTerm:searchTerm}});
 }
     
     return (

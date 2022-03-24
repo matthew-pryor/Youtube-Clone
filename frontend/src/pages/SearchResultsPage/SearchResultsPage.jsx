@@ -8,16 +8,15 @@ import { useLocation } from "react-router-dom";
 const SearchResultsPage = (props) => {
 
     const [searchResults, setSearchResults] = useState([]);
-    const {state} = useState('')
+    const {state} = useLocation()
 
       
     async function getSearchResults() {
-      const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${props.searchTerm}&totalResults=5&key=AIzaSyAuFcOc0gvBKmWmAZUt1LPUnnN1baWifgo`)
+      const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${state.searchTerm}&part=snippet&type=video&totalResults=5&key=AIzaSyAuFcOc0gvBKmWmAZUt1LPUnnN1baWifgo`)
       // Matt's Key: AIzaSyAuFcOc0gvBKmWmAZUt1LPUnnN1baWifgo
       // Vance's Key: AIzaSyBuzjiMZRf5Ajpg69rAQjY92YIC18cCjS4
       console.log(searchResults);
       setSearchResults(response.data.items);
-      console.log(props.searchTerm)
     }
     
     useEffect(() => {
@@ -26,7 +25,7 @@ const SearchResultsPage = (props) => {
 
     return ( 
         <div>
-            <h1>Search Results for: "{props.searchTerm}"</h1>
+            <h1>Search Results for: "{state.searchTerm}"</h1>
             <table>
               <tbody>
                   {searchResults &&
