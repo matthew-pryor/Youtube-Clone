@@ -3,6 +3,7 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import ReplyForm from "../ReplyForm.jsx/ReplyForm";
 import ReplyList from "../ReplyList/ReplyList";
+import LikeButton from "../LikeButton/LikeButton";
 
 const CommentList = (props) => {
 
