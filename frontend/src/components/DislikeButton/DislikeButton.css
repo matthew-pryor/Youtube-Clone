@@ -1,0 +1,13 @@
+button{
+    background-color: white;
+    float: right;
+}
+
+button.liked {
+    background-color: lightgreen;
+}
+
+
+button.disliked {
+    background-color: lightcoral;
+}

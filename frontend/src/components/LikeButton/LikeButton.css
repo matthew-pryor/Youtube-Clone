@@ -1,0 +1,8 @@
+button.liked {
+    background-color: lightgreen;
+}
+
+
+button.disliked {
+    background-color: lightcoral;
+}
