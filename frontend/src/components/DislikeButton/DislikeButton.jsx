@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react/cjs/react.production.min";
+import React, { useEffect, useState } from "react";
 import "./DislikeButton.css"
 
 
-const LikeButton = (props) => {
+const DislikeButton = (props) => {
     
     const [buttonClass, setButtonClass] = useState('inactive');
     
@@ -21,4 +21,4 @@ const LikeButton = (props) => {
      );
 }
  
-export default LikeButton;
+export default DislikeButton;

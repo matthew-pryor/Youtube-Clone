@@ -14,7 +14,6 @@ const VideoPage = (props) => {
     
     return ( 
         <div>
-            <h1>Video Player for {user.username}</h1>:
             <h1>{state.selectedVideo.snippet.title}</h1>
             <VideoPlayer selectedVideo={state.selectedVideo.id.videoId}/>
             <CommentForm selectedVideo={state.selectedVideo.id.videoId}/>

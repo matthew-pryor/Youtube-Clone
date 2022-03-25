@@ -4,6 +4,8 @@ import useAuth from "../../hooks/useAuth";
 import ReplyForm from "../ReplyForm.jsx/ReplyForm";
 import ReplyList from "../ReplyList/ReplyList";
 import LikeButton from "../LikeButton/LikeButton";
+import DislikeButton from "../DislikeButton/DislikeButton";
+import "./CommentList.css"
 
 const CommentList = (props) => {
 
@@ -32,7 +34,11 @@ const CommentList = (props) => {
             {comment &&
             comment.map((comment) => (
             <p key={comment.id}>
-                {user.username} {comment.video_id} {comment.text} {comment.likes} {comment.dislikes} <ReplyList commentId={comment.id}/> <ReplyForm commentId={comment.id}/>
+                {user.username}<br></br>
+                {comment.text}<br></br>
+                <LikeButton /> Likes {comment.likes}<br></br>
+                <DislikeButton/> Dislikes {comment.dislikes}<br></br>
+                <ReplyForm commentId={comment.id}/><ReplyList commentId={comment.id}/><br></br>
             </p>
             ))}
         </div>

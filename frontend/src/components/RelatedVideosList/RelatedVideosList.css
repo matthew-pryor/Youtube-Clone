@@ -3,3 +3,10 @@ button:hover {
     color: white;
     background-color: steelblue;
 }
+
+.table {
+    width: auto;
+    align-items: flex-end;
+    display: flex;
+    flex-direction: row;
+}

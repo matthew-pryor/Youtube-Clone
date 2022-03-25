@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react/cjs/react.production.min";
+import React, { useEffect, useState } from "react";
 import "./LikeButton.css"
 
 

@@ -1,0 +1,14 @@
+p {
+    width: 600px;
+}
+
+.div {
+    align-self: center;
+    border-style: solid;
+    border-color: gray;
+    list-style-type: none;
+    padding-bottom: 2%;
+    margin-bottom: 3%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
