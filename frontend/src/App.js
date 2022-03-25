@@ -1,8 +1,7 @@
 // General Imports
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
@@ -21,10 +20,6 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
-
-const [searchResults, setSearchResults] = useState([]);
-
-
 
   return (
     <div>

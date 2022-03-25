@@ -1,0 +1,22 @@
+table {
+    width: 800px;
+    align-items: center;
+}
+
+h1 {
+    color: aliceblue;
+    background-color: steelblue;
+    font-family: 'Franklin Gothic Medium';
+    padding: 2%;
+}
+
+tr {
+    font-family: 'Franklin Gothic Medium';
+    font-weight: 400;
+    font-size: 30px;
+    width: 600px;
+}
+
+img:hover {
+    cursor: pointer;
+}

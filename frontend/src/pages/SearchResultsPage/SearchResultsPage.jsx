@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
+import "./SearchResultsPage.css"
 
 
 
@@ -35,9 +36,12 @@ const SearchResultsPage = (props) => {
                   {searchResults &&
                     searchResults.map((selectedVideo) => (
                       <tr key={selectedVideo.etag}>
+                        <br></br>
                         <tr>{selectedVideo.snippet.title}</tr>
                           <img src={`https://i.ytimg.com/vi/${selectedVideo.id.videoId}/hqdefault.jpg`} onClick={() => {navigate("/video", {state:{selectedVideo:selectedVideo}})}}/>
                           <p>{selectedVideo.snippet.description}</p>
+                          <br></br>
+                          <br></br>
                       </tr>
                   ))}
               </tbody>

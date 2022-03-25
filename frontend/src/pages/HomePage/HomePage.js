@@ -30,9 +30,11 @@ const HomePage = () => {
   }, [token]);
   return (
     <div className="container">
-      <h1>Home Page for {user.username}!</h1>
-      <VideoPlayer></VideoPlayer>
-      <CommentList />
+       <h1>Home Page for {user.username}!</h1>
+       <br></br>
+       <iframe className="video" id="ytplayer" type="text/html" width="540" height="360"
+            src={`https://www.youtube.com/embed/JldMvQMO_5U?autoplay=1&origin=http://example.com`}
+            frameBorder="0"></iframe>
     </div>
   );
 };
