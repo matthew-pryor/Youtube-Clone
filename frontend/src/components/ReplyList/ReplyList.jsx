@@ -9,8 +9,9 @@ const ReplyList = (props) => {
 
     async function fetchReplies() {
         try{
-            let response = await axios.get(`http://127.0.0.1:8000/api/replies/comments/${props.commentId}`)
+            let response = await axios.get(`http://127.0.0.1:8000/api/replies/comments/${props.commentId}/`)
             console.log(response.data)
+            setReplies(response.data)
         }
         catch(error){
             console.log(error.message)
