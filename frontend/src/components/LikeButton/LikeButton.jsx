@@ -13,7 +13,7 @@ const LikeButton = () => {
     async function changeToLike(event) {
         event.preventDefault();
         if (buttonClass === 'inactive') {
-            let response = await axios.put(`http://127.0.0.1:8000/api/comments/${comment.id}/`, {likes:comment.likes+1})
+            let response = await axios.put(`http://127.0.0.1:8000/api/comments/${comment.id}/`, {likes:comment.likes+=1})
             setButtonClass('liked')
         }
         else {
