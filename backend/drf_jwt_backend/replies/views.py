@@ -22,10 +22,6 @@ def user_comment_replies(request, pk):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == 'GET':
-        replies = Reply.objects.filter(comment_id=pk)
-        serializer = ReplySerializer(replies, many=True)
-        return Response(serializer.data)
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
