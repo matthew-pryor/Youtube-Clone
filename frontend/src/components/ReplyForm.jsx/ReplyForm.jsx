@@ -13,11 +13,11 @@ const ReplyForm = (props) => {
         event.preventDefault(); //prevent page refresh when commenting
         let newReply = {
             user_id: user.username,
-            comment: comment.id,
+            comment: props.commentId,
             text: text,
         };
-        console.log(comment.id, newReply);
-        await axios.post(`http://127.0.0.1:8000/api/replies/comments/${comment.id}/`, newReply, { 
+        console.log(newReply);
+        await axios.post(`http://127.0.0.1:8000/api/replies/comments/${props.commentId}/`, newReply, { 
             headers: {
               Authorization: "Bearer " + token,
             },

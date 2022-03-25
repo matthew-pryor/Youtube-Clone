@@ -31,7 +31,7 @@ const CommentList = (props) => {
             {comment &&
             comment.map((comment) => (
             <p key={comment.id}>
-                {user.username} {comment.video_id} {comment.text} {comment.likes} {comment.dislikes} <ReplyForm></ReplyForm>
+                {user.username} {comment.video_id} {comment.text} {comment.likes} {comment.dislikes} <ReplyForm commentId={comment.id}/>
             </p>
             ))}
         </div>
