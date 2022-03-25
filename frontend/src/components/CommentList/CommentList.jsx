@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
+import ReplyForm from "../ReplyForm.jsx/ReplyForm";
 
 
 const CommentList = (props) => {
@@ -30,8 +31,9 @@ const CommentList = (props) => {
             {comment &&
             comment.map((comment) => (
             <p key={comment.id}>
-                {user.username} {comment.video_id} {comment.text} {comment.likes} {comment.dislikes}
-            </p>))}
+                {user.username} {comment.video_id} {comment.text} {comment.likes} {comment.dislikes} <ReplyForm></ReplyForm>
+            </p>
+            ))}
         </div>
     );
 }
