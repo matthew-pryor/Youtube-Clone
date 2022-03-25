@@ -7,11 +7,11 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('comments', '0004_remove_comment_reply'),
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('replies', '0002_remove_reply_comment_remove_reply_user'),
-    ]
+    # dependencies = [
+    #     ('comments', '0004_remove_comment_reply'),
+    #     migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+    #     ('replies', '0002_remove_reply_comment_remove_reply_user'),
+    # ]
 
     operations = [
         migrations.AddField(
