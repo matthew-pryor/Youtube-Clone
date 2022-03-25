@@ -2,7 +2,7 @@ import React, { useState, useEffect} from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import ReplyForm from "../ReplyForm.jsx/ReplyForm";
-
+import ReplyList from "../ReplyList/ReplyList";
 
 const CommentList = (props) => {
 
@@ -31,7 +31,7 @@ const CommentList = (props) => {
             {comment &&
             comment.map((comment) => (
             <p key={comment.id}>
-                {user.username} {comment.video_id} {comment.text} {comment.likes} {comment.dislikes} <ReplyForm commentId={comment.id}/>
+                {user.username} {comment.video_id} {comment.text} {comment.likes} {comment.dislikes} <ReplyList commentId={comment.id}/> <ReplyForm commentId={comment.id}/>
             </p>
             ))}
         </div>

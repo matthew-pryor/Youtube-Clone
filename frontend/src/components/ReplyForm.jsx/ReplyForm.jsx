@@ -28,11 +28,9 @@ const ReplyForm = (props) => {
         <form onSubmit={handleSubmitForm}>
             <label>Reply:</label>
             <input type='text' placeholder="Reply Here!" value={text} onChange={(event) => setText(event.target.value)}/>
-            <button type='submit'>Post</button>
+            <button type='submit'>Reply</button>
         </form>
      );
 }
  
 export default ReplyForm;
-
-//http://127.0.0.1:8000/api/replies/comments/7/
