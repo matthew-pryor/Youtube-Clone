@@ -5,6 +5,7 @@ import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
 import CommentList from "../../components/CommentList/CommentList";
 import CommentForm from "../../components/CommentForm.jsx/CommentForm";
 import RelatedVideosList from "../../components/RelatedVideosList/RelatedVideosList";
+import "./VideoPage.css"
 
 const VideoPage = (props) => {
     

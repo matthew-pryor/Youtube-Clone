@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from "react/cjs/react.production.min";
-import axios from "axios";
-import useAuth from "../../hooks/useAuth";
+import "./LikeButton.css"
 
 
-const LikeButton = () => {
+const LikeButton = (props) => {
     
     const [buttonClass, setButtonClass] = useState('inactive');
-    const [user, token] = useAuth;
-    const [likes, setLikes] = useState([]);
-    const [comment, setComments] = useState([]);
     
-    async function changeToLike(event) {
-        event.preventDefault();
+    function changeToLike(event) {
         if (buttonClass === 'inactive') {
-            let response = await axios.put(`http://127.0.0.1:8000/api/comments/${comment.id}/`, {likes:comment.likes+=1})
-            setButtonClass('liked')
+           setButtonClass('active')
         }
         else {
             setButtonClass('inactive')
